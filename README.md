@@ -20,7 +20,7 @@ FastAPI STARTUP
 ```
  you could also specify the host and port to run 
  ```sh
- python management.py runserver `${host}` `${port}`
+ python management.py runserver ${host} ${port}
  ```
 
 ## **DATABASE SETUP**
