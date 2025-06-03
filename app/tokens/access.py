@@ -42,7 +42,7 @@ class AccessToken :
         Returns:
             str : the encoded token
         """
-        payload = {'user_id' : user.id , 'email' : user.email , 'first_name' : user.first_name , 'token_type' : 'access'}
+        payload = {'user_id' : user.id , 'email' : user.email , 'token_type' : 'access'}
         expires = datetime.utcnow() + settings.ACCESS_TOKEN_LIFETIME
         payload.update({'exp' : expires})
         return jwt.encode(payload , settings.SECRET_KEY , algorithm= settings.ALGORITHM)

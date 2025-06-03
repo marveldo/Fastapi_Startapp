@@ -1,11 +1,14 @@
-from fastapi import FastAPI, status, Request , HTTPException
+from fastapi import FastAPI, status, Request , HTTPException 
+from fastapi.staticfiles import StaticFiles
 from fastapi.exceptions import RequestValidationError 
 from fastapi.responses import JSONResponse
 from .logger import logger
 from .urls import api_main_route
+from .settings import settings
 
 app = FastAPI()
 app.include_router(api_main_route)
+app.mount("/static", StaticFiles(directory=settings.STATIC_FILES), name="static")
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception(request: Request, exc: RequestValidationError):

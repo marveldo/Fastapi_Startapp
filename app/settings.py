@@ -8,7 +8,7 @@ load_dotenv()
 
 
 class Settings(BaseSettings) :
-    DATABASE_TYPE : str = os.getenv('DATABASE_TYPE')
+    DATABASE_TYPE : str = os.getenv('DATABASE_TYPE', 'sqlite')
     DATABASE_NAME : str  = os.getenv('DATABASE_NAME', '')
     DATABASE_USERNAME : str = os.getenv('DATABASE_USERNAME', '')
     DATABASE_PASSWORD : str = os.getenv('DATABASE_PASSWORD' , '')
@@ -21,6 +21,6 @@ class Settings(BaseSettings) :
     REFRESH_TOKEN_LIFETIME : timedelta = timedelta(days = 3)
     ROTATE_REFRESH_TOKENS : bool = True
     BLACKLIST_ON_ROTATION : bool = True
-    
+    STATIC_FILES : str = '/static'
 settings = Settings()
 
